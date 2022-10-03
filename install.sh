@@ -136,7 +136,7 @@ EOF
 function errout {
   echo "ERROR: $*, exiting..." >&2
   echo "========================================================="
-  docker-compose down
+  docker-compose -f docker-compose-non-dev.yml down
   rm -rf /etc/nginx/upstream/superset.conf
   exit 1
 }
@@ -157,8 +157,8 @@ echo "Building and creating docker containers"
 git clone https://github.com/apache/superset.git
 cd superset
 docker-compose -f docker-compose-non-dev.yml pull
-sed -y "s/image: postgres:10/image: postgres:14/g" docker-compose-non-dev.yml
-sed -y "s/6000:8088/image: postgres:14/g" docker-compose-non-dev.yml
+sed -i "s/image: postgres:10/image: postgres:14/g" docker-compose-non-dev.yml
+sed -i "s/6000:8088/image: postgres:14/g" docker-compose-non-dev.yml
 docker-compose -f docker-compose-non-dev.yml up
 
 echo "Configuring nginx"
