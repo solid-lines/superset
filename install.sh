@@ -104,7 +104,7 @@ function install_upstream {
           server {
                 server_name  $HOSTNAME;
                 location / {
-                  proxy_pass        http://localhost:6000;
+                  proxy_pass        http://localhost:8088;
               proxy_set_header   Host \$host;
                   proxy_set_header   X-Real-IP \$remote_addr;
                   proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -159,7 +159,7 @@ cd superset
 docker-compose -f docker-compose-non-dev.yml pull
 sed -i "s/image: postgres:10/image: postgres:14/g" docker-compose-non-dev.yml
 #sed -i "s/8088:8088/6000:8088/g" docker-compose-non-dev.yml
-docker-compose -f docker-compose-non-dev.yml up
+docker-compose -f docker-compose-non-dev.yml up -d
 
 echo "Configuring nginx"
 if ! which nginx 1>/dev/null; then
