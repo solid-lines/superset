@@ -158,7 +158,7 @@ git clone https://github.com/apache/superset.git
 cd superset
 docker-compose -f docker-compose-non-dev.yml pull
 sed -i "s/image: postgres:10/image: postgres:14/g" docker-compose-non-dev.yml
-sed -i "s/6000:8088/image: postgres:14/g" docker-compose-non-dev.yml
+#sed -i "s/8088:8088/6000:8088/g" docker-compose-non-dev.yml
 docker-compose -f docker-compose-non-dev.yml up
 
 echo "Configuring nginx"
