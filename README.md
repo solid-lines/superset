@@ -1,4 +1,4 @@
-# Superset-docker-compose
+# Superset-docker-compose  (Port 8088 has to be available)
 
 Run: ./install.sh \<HOSTNAME\>
 
